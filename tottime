@@ -1,0 +1,78 @@
+import os
+import re
+import subprocess
+
+def parse_time_string(time_str):
+    # Regular expression to capture time ranges (X-Ys) and individual times (Zs)
+    pattern = r'(\d+)-(\d+)s|(\d+)s|(\d+)'
+
+    min_seconds = 0
+    max_seconds = 0
+    used_seconds = set()
+    matches = re.findall(pattern, time_str)
+    for match in matches:
+        if match[0]:  # Time range format X-Ys
+            start_time, end_time = map(int, match[:2])
+            for sec in range(start_time, end_time + 1):
+                if sec not in used_seconds:
+                    min_seconds += sec
+                    used_seconds.add(sec)
+            max_seconds += end_time
+        elif match[2]:  # Individual time format Xs
+            sec = int(match[2])
+            if sec not in used_seconds:
+                min_seconds += sec
+                max_seconds += sec
+                used_seconds.add(sec)
+        elif match[3]:  # Individual time format Z
+            sec = int(match[3])
+            if sec not in used_seconds:
+                min_seconds += sec
+                max_seconds += sec
+                used_seconds.add(sec)
+
+    return min_seconds, max_seconds
+
+def calculate_total_time(filename):
+    try:
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+
+            min_seconds = 0
+            max_seconds = 0
+            for line in lines:
+                min_time, max_time = parse_time_string(line.strip())
+                min_seconds += min_time
+                max_seconds += max_time
+
+            return min_seconds, max_seconds
+
+    except FileNotFoundError:
+        print(f"File '{filename}' not found.")
+        return None
+
+def open_file_with_gedit(filename):
+    if os.path.exists(filename):
+        subprocess.run(['gedit', filename])
+    else:
+        with open(filename, 'w') as file:
+            file.write("40-50s\n30-40s\n50sec\n10\n200-300s\n")  # Add default content if the file doesn't exist
+        subprocess.run(['gedit', filename])
+
+if __name__ == "__main__":
+    input_file = "input.txt"
+
+    # Open the file with gedit
+    open_file_with_gedit(input_file)
+
+    # Calculate and display the total time range
+    min_seconds, max_seconds = calculate_total_time(input_file)
+    if min_seconds is not None and max_seconds is not None:
+        min_minutes = min_seconds // 60
+        min_remain_seconds = min_seconds % 60
+
+        max_minutes = max_seconds // 60
+        max_remain_seconds = max_seconds % 60
+
+        print(f"Total time taken is {max_seconds}s or {max_minutes} min {max_remain_seconds} sec.")
+

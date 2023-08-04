@@ -1,0 +1,6 @@
+# convert all m4a to wav
+for f in *.m4a; do ffmpeg -i "$f" "${f/%m4a/wav}"; done
+
+# Single
+ffmpeg -i .m4a .wav
+

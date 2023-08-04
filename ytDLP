@@ -1,0 +1,36 @@
+with sub+1080+folder
+yt-dlp -f 248+251 --write-auto-subs --write-subs --sub-langs en -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" 
+
+without folder->
+-o "%(playlist_index)s - %(title)s.%(ext)s"
+
+with folder->
+-o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
+
+subtitle->
+--write-sub --write-auto-sub --sub-lang "en.*"
+--write-auto-subs --write-subs --sub-langs en
+
+only subtile->
+--all-subs --skip-download
+
+From vid 2 to 8
+--playlist-start 2 --playlist-end 8
+
+First 5 videos of a playlist
+--playlist-end 5
+
+From 7 onward
+--playlist-start 7
+
+Download specific video
+--playlist-items 2,4,6
+
+Specify range
+--playlist-items 2-3,5,8-10,18
+ 
+all playlists of channel->
+-o '%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'
+
+Full Udemy course->
+-u user -p password -o '~/MyVideos/%(playlist)s/%(chapter_number)s - %(chapter)s/%(title)s.%(ext)s'
