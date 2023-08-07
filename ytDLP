@@ -34,3 +34,8 @@ all playlists of channel->
 
 Full Udemy course->
 -u user -p password -o '~/MyVideos/%(playlist)s/%(chapter_number)s - %(chapter)s/%(title)s.%(ext)s'
+
+Facebook video
+#need to import cookies using any extension
+youtube-dl --list-formats --cookies cookies.txt [link]
+youtube-dl -f [format] --cookies cookies.txt [link]
