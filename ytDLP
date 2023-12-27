@@ -20,6 +20,9 @@ From vid 2 to 8
 First 5 videos of a playlist
 --playlist-end 5
 
+Download best format but not better than 480p
+'bestvideo[height<=480]+bestaudio/best[height<=480]'
+
 From 7 onward
 --playlist-start 7
 
