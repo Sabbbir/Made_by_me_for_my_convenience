@@ -44,4 +44,5 @@ youtube-dl --list-formats --cookies cookies.txt [link]
 youtube-dl -f [format] --cookies cookies.txt [link]
 
 Music video
-yt-dlp -f "bestaudio[ext=m4a]","bestaudio[ext=webm]" -x --remux-video "webm>ogg/opus>ogg/aac>m4a" [URL]
+yt-dlp -f "bestaudio[ext=webm]" --merge-output-format "webm>ogg" [URL]
+yt-dlp -f "bestvideo[height=480][ext=mp4]+bestaudio[ext=m4a]" --merge-output-format mp4 
