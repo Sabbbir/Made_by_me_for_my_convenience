@@ -42,3 +42,6 @@ Facebook video
 #need to import cookies using any extension
 youtube-dl --list-formats --cookies cookies.txt [link]
 youtube-dl -f [format] --cookies cookies.txt [link]
+
+Music video
+yt-dlp -f "bestaudio[ext=m4a]","bestaudio[ext=webm]" -x --remux-video "webm>ogg/opus>ogg/aac>m4a" [URL]
