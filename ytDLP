@@ -1,5 +1,5 @@
-with sub+1080/720+folder
-yt-dlp -f "bestvideo[height<=1080][vcodec=vp9][ext=webm]+bestaudio[ext=webm]/bestvideo[height<=720][vcodec=vp9][ext=webm]+bestaudio[ext=webm]" --write-auto-subs --write-subs --sub-langs en -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
+with sub+1080/720
+yt-dlp -f "bestvideo[height<=1080][ext=webm]+bestaudio[ext=webm]/bestvideo[height<=720][ext=webm]+bestaudio[ext=webm]" --write-auto-subs --write-subs --sub-langs en -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
 
 without folder->
 yt-dlp -f 248+251 -o "%(playlist_index)s - %(title)s.%(ext)s"
