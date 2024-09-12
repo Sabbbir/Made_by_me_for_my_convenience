@@ -2,10 +2,10 @@ with sub+1080+folder
 yt-dlp -f 248+251 --write-auto-subs --write-subs --sub-langs en -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" 
 
 without folder->
--o "%(playlist_index)s - %(title)s.%(ext)s"
+yt-dlp -f 248+251 -o "%(playlist_index)s - %(title)s.%(ext)s"
 
 with folder->
--o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
+yt-dlp -f 248+251 -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
 
 subtitle->
 --write-sub --write-auto-sub --sub-lang "en.*"
