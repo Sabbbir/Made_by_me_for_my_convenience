@@ -1,0 +1,15 @@
+find "$(pwd)" -type f \( -name "*.mp4" -o -name "*.mkv" -o -name "*.webm" \) -print0 | while IFS= read -r -d '' file; do
+  echo "File: $file"
+  size=$(stat --format="%s" "$file")
+  if [ "$size" -ge $((1024*1024*1024)) ]; then
+    size_formatted=$(echo "scale=2; $size/1024/1024/1024" | bc)GB
+  elif [ "$size" -ge $((1024*1024)) ]; then
+    size_formatted=$(echo "scale=2; $size/1024/1024" | bc)MB
+  else
+    size_formatted=$(echo "scale=2; $size/1024" | bc)KB
+  fi
+  echo "Size: $size_formatted"
+  ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of default=noprint_wrappers=1 "$file"
+  echo ""
+done
+

@@ -46,6 +46,3 @@ youtube-dl -f [format] --cookies cookies.txt [link]
 Music video
 yt-dlp -f "bestaudio[ext=webm]" --merge-output-format "webm>ogg" [URL]
 yt-dlp -f "bestvideo[height=480][ext=mp4]+bestaudio[ext=m4a]" --merge-output-format mp4 
-
-Only audio with thumb
-yt-dlp -f bestaudio -x --audio-quality 0 --embed-thumbnail --add-metadata -o "%(playlist_index)s - %(title)s.%(ext)s" https://www.youtube.com/watch\?v\=j-RpvIuazmc\&list\=PLDRv3uN3NaYfjm2gDyytD_lupJh93jF_9\&index\=126\&ab_channel\=LeagueofLegends
