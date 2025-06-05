@@ -49,3 +49,7 @@ yt-dlp -f "bestvideo[height=480][ext=mp4]+bestaudio[ext=m4a]" --merge-output-for
 
 Only audio with thumb
 yt-dlp -f bestaudio -x --audio-quality 0 --embed-thumbnail --add-metadata -o "%(playlist_index)s - %(title)s.%(ext)s" https://www.youtube.com/watch\?v\=j-RpvIuazmc\&list\=PLDRv3uN3NaYfjm2gDyytD_lupJh93jF_9\&index\=126\&ab_channel\=LeagueofLegends
+
+
+# FTP
+wget -r -c -nd --no-parent http://172.16.50.9/DHAKA-FLIX-9/Anime%20%26%20Cartoon%20TV%20Series/Anime-TV%20Series%20%E2%99%A5%20%20G%20%20%E2%80%94%20%20M/Jujutsu%20Kaisen%20%28TV%20Cartoon%202020%E2%80%93%20%29%201080p%20%5BMulti%20Audio%5D/Season%201/
